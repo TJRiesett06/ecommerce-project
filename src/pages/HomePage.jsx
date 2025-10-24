@@ -6,6 +6,8 @@ export function HomePage() {
     <>
       <Header />
 
+      <link rel="icon" type="image/svg+xml" href="./home-favicon.png" />
+
       <title>Ecommerce Project</title>
 
       <div className="home-page">
