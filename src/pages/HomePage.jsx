@@ -1,17 +1,22 @@
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { Header } from '../components/Header';
-import { products } from '../../starting-code/data/products'
 import './HomePage.css';
 
 export function HomePage() {
+  const [products, setProducts] = useState([]);
+
   //axios acts like fetch. its an npm package that we were able to install.
   //axios.get sends the request to the backend and becuase its asynchronus we have to use .then
   //.then is a method so we create a arrow function so we can run code when we get a response.
   //we set a parameter response and say when console.log(response.data) saying lets access an object.data to show our response data which retrieves the data from our backend.
-  axios.get('http://localhost:3000/api/products')
-    .then((response) => {
-      console.log(response.data);
+  useEffect(()=>{
+    axios.get('http://localhost:3000/api/products')
+      .then((response) => {
+        setProducts(response.data);
     });
+  }, []);
+  
       
 
   return (
