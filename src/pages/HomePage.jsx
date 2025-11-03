@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Header } from '../components/Header';
+import { formatMoney } from '../utils/money';
 import './HomePage.css';
 
 export function HomePage({ cart }) {
@@ -9,7 +10,7 @@ export function HomePage({ cart }) {
   //.then is a method so we create a arrow function so we can run code when we get a response.
   //we set a parameter response and say when console.log(response.data) saying lets access an object.data to show our response data which retrieves the data from our backend.
   const [products, setProducts] = useState([]);
-  
+
   useEffect(()=>{
     axios.get('/api/products')
       .then((response) => {
@@ -51,7 +52,7 @@ export function HomePage({ cart }) {
                 </div>
 
                 <div className="product-price">
-                  ${(product.priceCents / 100).toFixed(2)}
+                  {formatMoney(product.priceCents)}
                 </div>
 
                 <div className="product-quantity-container">
