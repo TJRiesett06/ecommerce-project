@@ -5,6 +5,7 @@ import './HomePage.css';
 
 export function HomePage() {
   const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
 
   //axios acts like fetch. its an npm package that we were able to install.
   //axios.get sends the request to the backend and becuase its asynchronus we have to use .then
@@ -15,13 +16,18 @@ export function HomePage() {
       .then((response) => {
         setProducts(response.data);
     });
+
+    axios.get('http://localhost:3000/api/cart-items')
+      .then((response) => {
+        setCart(response.data);
+      })
   }, []);
   
       
 
   return (
     <>
-      <Header />
+      <Header cart={cart}/>
 
       <link rel="icon" type="image/svg+xml" href="./home-favicon.png" />
 
