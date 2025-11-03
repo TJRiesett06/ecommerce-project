@@ -12,12 +12,12 @@ export function HomePage() {
   //.then is a method so we create a arrow function so we can run code when we get a response.
   //we set a parameter response and say when console.log(response.data) saying lets access an object.data to show our response data which retrieves the data from our backend.
   useEffect(()=>{
-    axios.get('http://localhost:3000/api/products')
+    axios.get('/api/products')
       .then((response) => {
         setProducts(response.data);
     });
 
-    axios.get('http://localhost:3000/api/cart-items')
+    axios.get('/api/cart-items')
       .then((response) => {
         setCart(response.data);
       })
